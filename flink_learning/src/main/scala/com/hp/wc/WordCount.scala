@@ -8,7 +8,7 @@ object WordCount {
   def main(args: Array[String]): Unit = {
     val environment: ExecutionEnvironment = ExecutionEnvironment.getExecutionEnvironment
 
-    val inputFilePath: String = "F:\\learning\\code\\flink_learning\\src\\main\\resources\\data.txt"
+    val inputFilePath: String = "flink_learning/src/main/resources/data.txt"
     val inputDataSet: DataSet[String] = environment.readTextFile(inputFilePath)
 
     val resultDataSet: DataSet[(String,Int)] = inputDataSet
