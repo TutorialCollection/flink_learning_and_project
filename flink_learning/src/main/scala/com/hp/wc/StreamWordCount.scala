@@ -1,17 +1,17 @@
 package com.hp.wc
 
-import org.apache.flink.api.java.utils.ParameterTool
 import org.apache.flink.streaming.api.scala._
 
 object StreamWordCount {
   def main(args: Array[String]): Unit = {
     val environment: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
 
-    val parameterTool: ParameterTool = ParameterTool.fromArgs(args)
-    val hostname: String = parameterTool.get("host")
-    val port: Int = parameterTool.getInt("port")
+    //val parameterTool: ParameterTool = ParameterTool.fromArgs(args)
+    //val hostname: String = parameterTool.get("host")
+    //val port: Int = parameterTool.getInt("port")
 
-    val inputDataStream: DataStream[String] = environment.socketTextStream(hostname,port)
+    // 使用 nc -lk 9999 不断输入数据流
+    val inputDataStream: DataStream[String] = environment.socketTextStream("localhost", 9999)
 
     val result: DataStream[(String, Int)] = inputDataStream
       .flatMap(_.split(" ")).startNewChain()
