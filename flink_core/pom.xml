@@ -14,6 +14,7 @@
         <scala.binary.version>2.11</scala.binary.version>
         <scala.version>2.11.12</scala.version>
 
+        <!-- scope 本地调试时注销 设定为默认的 compile 打包时设定为 provided -->
         <setting.scope>provided</setting.scope>
     </properties>
 
@@ -37,22 +38,28 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-planner_2.11</artifactId>
             <version>1.10.0</version>
+            <scope>${setting.scope}</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-planner-blink_2.11</artifactId>
             <version>1.10.0</version>
+            <scope>${setting.scope}</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-csv</artifactId>
             <version>1.10.0</version>
+            <scope>${setting.scope}</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
             <version>1.10.0</version>
+            <scope>compile</scope>
         </dependency>
 
 
@@ -60,12 +67,14 @@
             <groupId>org.apache.bahir</groupId>
             <artifactId>flink-connector-redis_2.11</artifactId>
             <version>1.0</version>
+            <scope>${setting.scope}</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-elasticsearch7_2.11</artifactId>
             <version>1.10.0</version>
+            <scope>${setting.scope}</scope>
         </dependency>
 
         <dependency>
@@ -81,30 +90,21 @@
             <version>${scala.version}</version>
             <scope>${setting.scope}</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-statebackend-rocksdb_2.11</artifactId>
             <version>1.10.0</version>
+            <scope>${setting.scope}</scope>
         </dependency>
 
-        <!-- Add connector dependencies here. They must be in the default scope (compile). -->
-
-        <!-- Example:
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka-0.10_${scala.binary.version}</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        -->
-
-        <!-- Add logging framework, to produce console output when running in the IDE. -->
-        <!-- These dependencies are excluded from the application JAR by default. -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.7</version>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
